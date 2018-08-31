@@ -71,8 +71,6 @@ class FindSummonerComponent extends
    */
   userDataValid = (props: FindSummonerPropsType, state: FindSummonerStateType): boolean => {
     const validName = state.summonerName;
-
-    console.log(validName);
     return validName;
   };
 

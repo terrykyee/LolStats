@@ -8,3 +8,8 @@ export const FindSummonerDisplayStringConstants = {
   SUMMONER_HINT: 'Jauny',
   LOAD_STATS: 'Load Stats',
 };
+
+export const SummonerDisplayConstants = {
+  POINTS_LABEL: 'Points',
+  LEVEL_LABEL: 'Level',
+};

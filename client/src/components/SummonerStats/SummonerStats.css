@@ -1,92 +1,14 @@
-.main {
-    font-family: Verdana;
+.summonerContainer {
+  height: 100%;
+  min-height: 100%;
 }
 
-.inputField {
-    display: flex;
-    flex-direction: row;
-    margin: 7px;
-    align-content: space-between;
-}
-
-.input {
-    width: 250px;
-}
-
-.label {
-    flex-grow: 1;
-    font-size: small;
-    font-weight: bold;
-    margin-right: 15px;
-    margin-top: 2px;
-    text-align: left;
-}
-
-.loginButtonPane {
-    display: flex;
-    margin-top: 15px;
-}
-
-
-.loginButton {
-    flex-grow: 1;
-    font-weight: bold;
-    color: white;
-    border: none;
-    background: deepskyblue;
-    font-size: 15px;
-    height: 25px;
-    margin: 0 120px;
-    margin-bottom: 5px;
-}
-
-.loginButton:focus {
-    outline: none;
-}
-
-.loginButton:active {
-    background: skyblue;
-}
-
-.loggedIn {
-    font-size: 24px;
-    color: black;
-    font-weight: bold;
-}
-
-.error {
-    color: red;
-    margin-top: 5px;
-    font-size: 12px;
-}
-
-.rememberMeLabel {
-    font-size: small;
-}
-
-.rememberMe {
-    margin-top: 5px;
-    font-size: small;
-}
-
-/* Loader Styles */
-
-.loader {
-    margin: 60px auto;
-    font-size: 10px;
-    position: relative;
-    text-indent: -9999em;
-    border-width: 10px;
-    border-style: solid;
-    border-color: white;
-    border-top-color: indianred;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.summonerPane {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  width: 200px;
+  height: 100%;
+  min-height: 100%;
+  flex-grow: 1;
 }

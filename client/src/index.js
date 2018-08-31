@@ -10,7 +10,7 @@ import SummonerStats from './components/SummonerStats/SummonerStats';
 const root = (
   <BrowserRouter>
     <div>
-      <Route exact path='/' component={App} />
+      <Route path='/' component={App} />
       <Route path='/summoners/:summoner' component={SummonerStats} />
     </div>
   </BrowserRouter>

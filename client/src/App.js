@@ -57,10 +57,10 @@ class App extends React.Component<AppPropsType, AppStateType> {
       <div className="App">
         <header className="App-header">
           <h1>Summoner Stats</h1>
+          <div className="search">
+            <FindSummoner />
+          </div>
         </header>
-        <div className="login">
-          <FindSummoner />
-        </div>
       </div>
     );
   }

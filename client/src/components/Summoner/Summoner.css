@@ -1,0 +1,45 @@
+.summoner {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: indianred;
+  height: 100%;
+}
+
+.summonerName {
+  font-size: 20px;
+  opacity: 0.54;
+  color: #000000;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  margin-left: 5px;
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+.summonerLabels {
+
+}
+
+.leagueText,
+.levelText,
+.leagueTextContd {
+  font-weight: 800;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+.levelText {
+  text-align: center;
+}
+
+.leagueText {
+  margin-top: 10px;
+}
+
+.profileIcon {
+  margin-top: 10px;
+}

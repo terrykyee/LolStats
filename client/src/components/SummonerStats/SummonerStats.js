@@ -1,6 +1,8 @@
 // @flow
 /**
- * @file Login/Sign Up React component
+ * @file Full summoner stats container React component, also performs all the network calls.
+ * Contains all the pieces needed for a complete collection of statistics for a summoner and their
+ * matches
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -10,6 +12,11 @@ import {
   NotFoundDataAccessError,
   UnauthenticatedDataAccessError,
 } from "../../lib/NetworkUtilities";
+import type { AugMatchDataType } from '../../data/types/MatchDataType';
+import type { LeagueDataType } from '../../data/types/LeagueDataType';
+import type { SummonerDataType } from '../../data/types/SummonerDataType';
+import Summoner from '../Summoner/Summoner';
+import Matches from '../Matches/Matches';
 
 // Flow type definitions for injected props
 type SummonerStatsInjectedPropsType = {
@@ -33,7 +40,9 @@ type SummonerStatsPropsType = SummonerStatsInjectedPropsType &
 type SummonerStatsStateType = {
   isFetching: boolean,
   error: string,
-  summonerData: any,
+  summonerData: SummonerDataType,
+  matches: Array<AugMatchDataType>,
+  leagueData: LeagueDataType,
 }
 
 const ErrorMessages = {
@@ -41,6 +50,8 @@ const ErrorMessages = {
   UNAUTHENTICATED_MESSAGE: 'You have entered an invalid user name or password',
   SERVER_FAILED: 'Our service is currently offline, please try again later',
 };
+
+type ApiRequestFunctionType = (arg: any) => Promise<*>;
 
 /**
  * Summoner Stats React Component class
@@ -67,17 +78,37 @@ class SummonerStatsComponent extends
   props: SummonerStatsPropsType;
 
   async componentDidMount() {
-    const { summoner } = this.props.match.params;
-    console.log(summoner);
+    const {summoner} = this.props.match.params;
+    let summonerData;
+    let leagueData;
+    let matches;
 
-    try {
-      const summonerData = await LolStatServerRequests.summoner(summoner);
+    await this.sendRequest(async () => {
+      summonerData = await LolStatServerRequests.summoner(summoner);
+    });
 
-      this.setState({
-        summonerData,
-        isFetching: false,
+    if (summonerData) {
+      await this.sendRequest(async () => {
+        leagueData = await LolStatServerRequests.league(summonerData.id.toString());
       });
 
+      await this.sendRequest(async () => {
+        matches = await LolStatServerRequests.matches(summonerData.accountId.toString());
+      });
+    }
+
+    this.setState({
+      summonerData,
+      leagueData: leagueData[0],
+      matches,
+      isFetching: false,
+    });
+
+  }
+
+  async sendRequest(requestHandler: ApiRequestFunctionType) {
+    try {
+      await requestHandler();
     } catch (error) {
       if (error instanceof NotFoundDataAccessError) {
         this.setState({
@@ -100,7 +131,6 @@ class SummonerStatsComponent extends
         isFetching: false,
       });
     }
-
   }
 
   /**
@@ -109,20 +139,30 @@ class SummonerStatsComponent extends
    */
   render(): React.Node {
     if (this.state.isFetching) {
-      return <div className="loader" />
+      return <div className="loader"/>
     }
 
-    const error = this.state.error ? (
-      <div className="error">
-        {this.state.error}
-      </div>
-    ) : (<div></div>);
+    if (this.state.error) {
+      return (
+        <div className="error">
+          {this.state.error}
+        </div>
+      );
+    }
 
     return (
-      <div>
-        <img src={this.state.summonerData.profileIconUrl} alt='Profile Icon' className='profile-icon' />
-        {this.state.summonerData.name}
-        {error}
+      <div className="summonerContainer">
+        <div className="summonerPane">
+          <Summoner
+            summonerData={this.state.summonerData}
+            leagueData={this.state.leagueData}
+          />
+        </div>
+        <div className="matchesPane">
+          <Matches
+            matches={this.state.matches}
+          />
+        </div>
       </div>
     );
   }
