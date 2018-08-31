@@ -1,0 +1,8 @@
+/**
+ * See https://github.com/jfromaniello/url-join
+ */
+type UriJoinCallType = (rootPath: string, ...rest: Array<string>) => string;
+
+declare module 'url-join' {
+    declare module.exports: UriJoinCallType;
+}

@@ -1,0 +1,23 @@
+[include]
+.*/src/.*
+
+[ignore]
+.*/node_modules/.*
+.*/node_modules/**/*
+<PROJECT_ROOT>/node_modules/**/*
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/package.json
+<PROJECT_ROOT>/build/.*
+<PROJECT_ROOT>/src/external/.*
+
+[libs]
+src/flow/
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+module.system=haste
+module.name_mapper='^.*[/]\([^/]*\).scss$' -> '\1Scss'
+module.name_mapper='^.*[/]\([^/]*\)ObjectMap$' -> 'ObjectMap'
+module.name_mapper='^.*[/]\([^/]*\).mp3$' -> 'AudioFile'
+suppress_comment= \\(.\\|\n\\)*\\$FlowSuppress

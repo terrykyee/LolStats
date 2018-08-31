@@ -1,0 +1,7 @@
+/**
+ * See https://www.npmjs.com/package/react-inputs-validation
+ */
+
+declare module 'react-inputs-validation' {
+  declare module.exports: any;
+}

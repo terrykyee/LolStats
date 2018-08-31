@@ -1,0 +1,7 @@
+/**
+ * See https://www.npmjs.com/package/string-format
+ */
+
+declare module 'string-format' {
+  declare module.exports: any;
+}

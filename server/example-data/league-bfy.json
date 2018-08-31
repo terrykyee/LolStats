@@ -1,0 +1,18 @@
+[
+  {
+    "leagueId": "930faadc-f191-3fc0-b715-79804ef73cfc",
+    "leagueName": "Taric's Shadehunters",
+    "tier": "CHALLENGER",
+    "queueType": "RANKED_SOLO_5x5",
+    "rank": "I",
+    "playerOrTeamId": "40036262",
+    "playerOrTeamName": "TF Blade",
+    "leaguePoints": 1215,
+    "wins": 355,
+    "losses": 272,
+    "veteran": true,
+    "inactive": false,
+    "freshBlood": false,
+    "hotStreak": false
+  }
+]

@@ -1,0 +1,78 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled source #
+###################
+*.class
+*.o
+*.so
+*.pyc
+
+# Packages #
+############
+*.deb
+*.build
+*.changes
+#*.jar
+*.gz
+
+# Logs #
+######################
+*.log
+
+# Builds #
+######################
+build/
+.gradle/
+.gradlehome
+
+# Ignore build files #
+######################
+**/debian/*
+**/coverage/*
+
+# Except for the build setting files #
+######################
+!**/debian/compat
+!**/debian/control
+!**/debian/rules
+!**/debian/changelog
+!**/debian/copyright
+!**/debian/pason-live-rig-view-web.install
+!**/debian/pason-live-rig-view-web.lintian-overrides
+
+# NodeJs #
+######################
+node_modules/
+
+# Eclipse #
+######################
+.checkstyle
+.classpath
+.settings/
+.project
+.metadata
+
+# IntelliJ #
+######################
+*.iml
+.idea/
+bin/
+**/out
+classes/

@@ -1,0 +1,7 @@
+/**
+ * See https://www.npmjs.com/package/express
+ */
+
+declare module 'express' {
+  declare module.exports: any;
+}

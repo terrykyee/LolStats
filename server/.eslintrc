@@ -1,0 +1,80 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "flowtype",
+    "react"
+  ],
+  "globals": {
+    "__DEV__": true,
+    "SyntheticInputEvent": false, // define React Synthetic Events as read-only globals
+    "SyntheticMouseEvent": false,
+    "SyntheticUIEvent": false,
+    "SyntheticKeyboardEvent": false,
+    "SyntheticWheelEvent": false,
+    "APP_VERSION": false,
+  },
+  "env": {
+    "browser": true,
+  },
+  "rules": {
+    "linebreak-style": ["off"],
+    "operator-linebreak": ["off"],
+    "function-paren-newline": ["error", "consistent"],
+    "no-console": 0, // this should be re-enabled on deployment
+    "no-confusing-arrow": ["error", {"allowParens": false}],
+    "no-mixed-operators": ["error",
+        {
+            "groups": [
+                ["&", "|", "^", "~", "<<", ">>", ">>>"],
+                ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+                ["&&", "||"],
+                ["in", "instanceof"]
+            ],
+            "allowSamePrecedence": true
+        }
+    ],
+    "no-plusplus": ["off"],
+    "no-restricted-globals": ["off", "isNaN", "isFinite"],
+    "object-curly-newline": ["error", { "consistent": true }],
+    "prefer-destructuring": ["off"],
+    "jsx-a11y/no-static-element-interactions": ["off"],
+    "jsx-a11y/no-noninteractive-element-interactions": ["off"],
+    "jsx-a11y/no-noninteractive-tabindex": ["off"],
+    "jsx-a11y/media-has-caption": ["off"],
+    "react/jsx-quotes": 0,
+    "react/require-render-return": 0, // The fat arrow syntax causes this rule to decide there is no return for some reason
+    "react/jsx-boolean-value": ["error", "always"],
+    "jsx-quotes": [2, "prefer-double"],
+    "arrow-body-style": ["error", "always"],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true, "allowAfterSuper": true}],
+    "import/no-extraneous-dependencies": [error, { "devDependencies": true, "optionalDependencies": true }],
+    "import/prefer-default-export": 0,
+    "flowtype/require-parameter-type": ["error"],
+    "flowtype/require-return-type": [
+        1,
+        "always",
+        {
+            "annotateUndefined": "never"
+        }
+    ],
+    "flowtype/space-after-type-colon": [
+        1,
+        "always"
+    ],
+    "flowtype/space-before-type-colon": [
+        1,
+        "never"
+    ],
+    "flowtype/type-id-match": [
+        1,
+        "^([A-Z][a-z0-9]+)+Type$"
+    ],
+    "flowtype/define-flow-type": 1,
+  },
+  "settings": {
+      "flowtype": {
+          "onlyFilesWithFlowAnnotation": true
+      }
+  }
+}

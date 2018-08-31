@@ -1,0 +1,7 @@
+/**
+ * See https://www.npmjs.com/package/extendable-error-class
+ */
+
+declare module 'extendable-error-class' {
+  declare module.exports: any;
+}

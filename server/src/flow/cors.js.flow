@@ -1,0 +1,7 @@
+/**
+ * See https://www.npmjs.com/package/cors
+ */
+
+declare module 'cors' {
+  declare module.exports: any;
+}
