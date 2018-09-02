@@ -2,7 +2,7 @@
 /**
  * @file Login server requests
  */
-import { checkHttpStatusCode, checkResponseStatusCode } from './FetchUtilities';
+import { checkHttpStatusCode } from './FetchUtilities';
 import { LolStatServerUrls } from './LolStatServerUrls';
 
 const LolStatRequestsErrorMessages = {
