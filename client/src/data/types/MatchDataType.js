@@ -1,5 +1,20 @@
 //@flow
 
+export type MatchDataType = {
+  platformId: string,
+  gameId: number,
+  champion: number,
+  queue: number,
+  season: number,
+  timestamp: number,
+  role: string,
+  lane: string,
+}
+
+export type MatchesDataType = {
+  matches: Array<MatchDataType>,
+}
+
 export type BansType = {
   championId: number,
   pickTurn: number,
@@ -136,6 +151,9 @@ export type AugStatsType = StatsType & {
   item4Url: string,
   item5Url: string,
   item6Url: string,
+  kda: number,
+  totalCreepScore: number,
+  tcsPerMin: number,
 }
 
 export type DeltasType = {
@@ -171,6 +189,7 @@ export type ParticipantType =  {
 
 export type AugParticipantType = ParticipantType & {
   championImgUrl: string,
+  championName: string,
 }
 
 export type PlayerType = {
@@ -189,26 +208,15 @@ export type ParticipantIdentityType =   {
   player: PlayerType,
 }
 
-export type BaseAugMatchDataType = {
+export type BaseAugMatchDetailsType = {
   summonerIdentityIndex: number,
   summonerSpell1ImgUrl: string,
   summonerSpell2ImgUrl: string,
   win: boolean,
-  kda: number,
-  totalCreepScore: number,
-  tcsPerMin: number,
   gameDurationMin: number,
 }
 
-export type MatchDataType = BaseMatchDataType & {
-  participants: Array<ParticipantType>,
-}
-
-export type AugMatchDataType = MatchDataType & BaseAugMatchDataType & {
-  participants: Array<AugParticipantType>,
-}
-
-export type BaseMatchDataType = {
+export type BaseMatchDetailsType = {
   gameId: number,
   platformId: string,
   gameCreation: number,
@@ -223,10 +231,18 @@ export type BaseMatchDataType = {
   participantIdentities: Array<ParticipantIdentityType>,
 }
 
-export type AugMatchesDataType = {
-  matches: Array<AugMatchDataType>,
+export type MatchDetailsType = BaseMatchDetailsType & {
+  participants: Array<ParticipantType>,
 }
 
-export type MatchesDataType = {
-  matches: Array<MatchDataType>,
+export type AugMatchDetailsType = MatchDetailsType & BaseAugMatchDetailsType & {
+  participants: Array<AugParticipantType>,
+}
+
+export type AugMatchDataType = MatchDataType & {
+  details: AugMatchDetailsType,
+}
+
+export type AugMatchesDataType = {
+  matches: Array<AugMatchDataType>,
 }

@@ -1,6 +1,12 @@
 .summonerContainer {
+  display: flex;
+  flex-direction: row;
   height: 100%;
   min-height: 100%;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  background-color: #a5273a;
 }
 
 .summonerPane {
@@ -10,5 +16,8 @@
   width: 200px;
   height: 100%;
   min-height: 100%;
-  flex-grow: 1;
+}
+
+.matchesPane {
+  width: 100%;
 }

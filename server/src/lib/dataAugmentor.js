@@ -31,17 +31,17 @@ function isWin(firstTeam, summonerTeamId: number): boolean {
 }
 
 /**
- * Retrieve the proper champion image url (specified by champion name) given a champion ID
+ * Retrieve the proper champion champion name given a champion ID
  * @param championId Champion ID
- * @returns URL for the champion image
+ * @returns Champion name
  */
-async function getChampionImageUrl(championId: number): Promise<string> {
+async function getChampionName(championId: number): Promise<string> {
   const championList = await getChampionsCache();
   const id = championId.toString();
   const championKey =
     Object.keys(championList.data).filter(championKey => championList.data[championKey].key === id);
 
-  return format(DATA_DRAGON_CHAMPION_IMG_URL, championList.data[championKey[0]].id);
+  return championList.data[championKey[0]].id;
 }
 
 /**
@@ -88,7 +88,9 @@ export async function matchDetails(accountId: number, matchDetailsData: MatchDat
     await Promise.all(matchDetailsData.participants.map(
       async (participant: ParticipantType): Promise<AugParticipantType> => {
         const newParticipant = Object.assign({}, participant);
-        newParticipant.championImgUrl = await getChampionImageUrl(participant.championId);
+        newParticipant.championName = await getChampionName(participant.championId);
+        newParticipant.championImgUrl =
+          format(DATA_DRAGON_CHAMPION_IMG_URL, newParticipant.championName);
         return newParticipant;
       },
     ));
@@ -112,15 +114,16 @@ export async function matchDetails(accountId: number, matchDetailsData: MatchDat
   const gameDurationMin = matchDetailsData.gameDuration / 60;
   const tcsPerMin = totalCreepScore / gameDurationMin; // match duration is in seconds
 
+  summonerParticipant.stats.kda = kda;
+  summonerParticipant.stats.totalCreepScore = totalCreepScore;
+  summonerParticipant.stats.tcsPerMin = tcsPerMin;
+
   // $FlowSuppress: Flow gets confused here but the resulting object is correct
   const augMatchData = Object.assign(matchDetailsData, {
     summonerIdentityIndex,
     summonerSpell1ImgUrl,
     summonerSpell2ImgUrl,
     win,
-    kda,
-    totalCreepScore,
-    tcsPerMin,
     gameDurationMin,
   });
   augMatchData.participants = augMatchParticipants;

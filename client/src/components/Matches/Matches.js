@@ -7,6 +7,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import './Matches.css';
 import { AugMatchesDataType } from '../../data/types/MatchDataType';
+import Match from '../Match/Match';
 
 // Flow type definitions for injected props
 type MatchesInjectedPropsType = {
@@ -29,12 +30,6 @@ type MatchesPropsType = MatchesInjectedPropsType &
  */
 type MatchesStateType = {
 }
-
-const ErrorMessages = {
-  NOT_FOUND_MESSAGE: 'Your user name has not been registered, please visit the Sign Up page if you wish to register',
-  UNAUTHENTICATED_MESSAGE: 'You have entered an invalid user name or password',
-  SERVER_FAILED: 'Our service is currently offline, please try again later',
-};
 
 /**
  * Summoner Stats React Component class
@@ -61,24 +56,25 @@ class MatchesComponent extends
     console.log(this.props.matches);
   }
 
+  generateMatches() {
+    if (this.props.matches && this.props.matches.matches) {
+      return this.props.matches.matches.map( match => (
+        <React.Fragment key={match.gameId}>
+          <Match match={match} />
+        </React.Fragment>
+      ));
+    }
+  }
+
   /**
    * Render this React component.
    * @returns {XML}
    */
   render(): React.Node {
-    if (this.state.isFetching) {
-      return <div className="loader" />
-    }
-
-    const error = this.state.error ? (
-      <div className="error">
-        {this.state.error}
-      </div>
-    ) : (<div></div>);
-
+    const matches = this.generateMatches();
     return (
-      <div>
-        {error}
+      <div className="matches">
+        {matches}
       </div>
     );
   }

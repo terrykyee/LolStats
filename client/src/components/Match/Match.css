@@ -1,0 +1,125 @@
+.match {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+}
+
+.matchHeaderWin,
+.matchHeaderLoss,
+.matchWin,
+.matchLoss {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.matchHeaderWin,
+.matchHeaderLoss {
+  justify-content: space-between;
+}
+
+.matchHeaderWin {
+  background-color: grey;
+}
+
+.matchHeaderLoss {
+  background-color: darkred;
+}
+
+.duration,
+.result {
+  margin: 0 5px;
+}
+
+.duration {
+  align-items: end;
+  font-weight: normal;
+  text-transform: none;
+}
+
+.matchWin {
+  background-color: white;
+  color: black;
+}
+
+.matchLoss {
+  background-color: black;
+  color: #ffffff;
+}
+
+.killStats,
+.stats,
+.champion {
+  display: block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.championIcon {
+  margin: 5px;
+}
+
+.championName {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.stats,
+.participantName {
+  font-weight: normal;
+  text-transform: none;
+  color: gray;
+  width: 80px;
+}
+
+.statItems {
+  margin: 2px;
+}
+
+.killStats {
+  text-align: center;
+  color: indianred;
+  font-size: 14px;
+  width: 100px;
+}
+
+.spells {
+  display: flex;
+  flex-direction: column;
+}
+
+.spellIcon,
+.itemIcon,
+.participantIcon {
+  margin: 2px;
+  border-radius: 20%;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+}
+
+.items {
+  width: 300px;
+}
+
+.participants {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.participant {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.participantIcon {
+  height: 25px;
+  width: 25px;
+}

@@ -3,7 +3,6 @@
  * @file Main application
  */
 import React from 'react';
-import { Textbox } from 'react-inputs-validation';
 import './App.css';
 import FindSummoner from './components/FindSummoner/FindSummoner';
 

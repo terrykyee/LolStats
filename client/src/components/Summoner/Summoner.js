@@ -34,12 +34,6 @@ type SummonerPropsType = SummonerInjectedPropsType &
 type SummonerStateType = {
 }
 
-const ErrorMessages = {
-  NOT_FOUND_MESSAGE: 'Your user name has not been registered, please visit the Sign Up page if you wish to register',
-  UNAUTHENTICATED_MESSAGE: 'You have entered an invalid user name or password',
-  SERVER_FAILED: 'Our service is currently offline, please try again later',
-};
-
 /**
  * Summoner Stats React Component class
  */
@@ -72,24 +66,32 @@ class SummonerComponent extends
    * @returns {XML}
    */
   render(): React.Node {
-    if (this.props.summonerData && this.props.leagueData) {
+    if (this.props.summonerData) {
       return (
         <div className="summoner">
           <center><img src={this.props.summonerData.profileIconUrl} alt='Profile Icon'
-              className='profileIcon'/></center>
+                       className='profileIcon'/></center>
           <div className="summonerName">{this.props.summonerData.name}</div>
-          <div className="levelText">{SummonerDisplayConstants.LEVEL_LABEL} {this.props.summonerData.summonerLevel}</div>
-          <div className="leagueText">
-            {lowerCaseAllWordsExceptFirstLetters(this.props.leagueData.tier)} {this.props.leagueData.rank}
-           </div>
-          <div className="leagueTextContd">
-            {this.props.leagueData.leaguePoints} {SummonerDisplayConstants.POINTS_LABEL}
-          </div>
+          <div
+            className="levelText">{SummonerDisplayConstants.LEVEL_LABEL} {this.props.summonerData.summonerLevel}</div>
+          {this.props.leagueData ? (
+            <React.Fragment>
+              <div className="leagueText">
+                {lowerCaseAllWordsExceptFirstLetters(this.props.leagueData.tier)} {this.props.leagueData.rank}
+              </div>
+              <div className="leagueTextContd">
+                {this.props.leagueData.leaguePoints} {SummonerDisplayConstants.POINTS_LABEL}
+              </div>
+              <div className="leagueName">
+                {this.props.leagueData.leagueName}
+              </div>
+            </React.Fragment>
+          ) : null}
         </div>
       );
     }
 
-    return <div />;
+    return <div/>;
   }
 }
 
