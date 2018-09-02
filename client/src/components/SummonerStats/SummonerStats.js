@@ -46,8 +46,8 @@ type SummonerStatsStateType = {
 }
 
 const ErrorMessages = {
-  NOT_FOUND_MESSAGE: 'Your user name has not been registered, please visit the Sign Up page if you wish to register',
-  UNAUTHENTICATED_MESSAGE: 'You have entered an invalid user name or password',
+  NOT_FOUND_MESSAGE: 'Summoner was not found',
+  UNAUTHENTICATED_MESSAGE: 'You are not authorized to retrieve summoner content',
   SERVER_FAILED: 'Our service is currently offline, please try again later',
 };
 
@@ -95,21 +95,21 @@ class SummonerStatsComponent extends
       await this.sendRequest(async () => {
         matches = await LolStatServerRequests.matches(summonerData.accountId.toString());
       });
+
+      this.setState({
+        summonerData,
+        leagueData: leagueData && leagueData.length > 0 ? leagueData[0] : null,
+        matches,
+        isFetching: false,
+      });
     }
-
-    this.setState({
-      summonerData,
-      leagueData: leagueData[0],
-      matches,
-      isFetching: false,
-    });
-
   }
 
   async sendRequest(requestHandler: ApiRequestFunctionType) {
     try {
       await requestHandler();
     } catch (error) {
+      console.log(error);
       if (error instanceof NotFoundDataAccessError) {
         this.setState({
           error: ErrorMessages.NOT_FOUND_MESSAGE,
@@ -150,6 +150,7 @@ class SummonerStatsComponent extends
       );
     }
 
+    // TODO make use of react-infinite-scroller to load matches as you scroll to increase responsiveness
     return (
       <div className="summonerContainer">
         <div className="summonerPane">

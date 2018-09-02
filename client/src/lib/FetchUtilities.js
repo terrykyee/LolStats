@@ -26,36 +26,37 @@ export const FetchConstants = {
 /**
  * Checks for a response successful HTTP status code (2xx) and if it is not successful, throw
  * a HttpDataAccessError.
- * @param response - The HTTP response object to check.
+ * @param response - response
+ * @param responseStatus - response status code
  * @param message - Message to include in any exceptions
  */
-export function checkHttpStatusCode(response: Object, message: string) {
-  if (response === null) {
+export function checkHttpStatusCode(response, responseStatus: number, message: string) {
+  if (responseStatus === null) {
     throw new DataAccessError(message, Date.now(), response);
   }
 
-  if (response.status >= 200 && response.status < 400) {
+  if (responseStatus >= 200 && responseStatus < 400) {
     return;
   }
 
-  if (response.status === 401) {
+  if (responseStatus === 401) {
     throw new UnauthenticatedDataAccessError(message, Date.now(), response);
   }
 
-  if (response.status === 403) {
+  if (responseStatus === 403) {
     throw new UnauthorizedDataAccessError(message, Date.now(), response);
   }
 
-  if (response.status === 404) {
+  if (responseStatus === 404) {
     throw new NotFoundDataAccessError(message, Date.now(), response);
   }
 
-  if (response.status >= 400 && response.status < 500) {
+  if (responseStatus >= 400 && responseStatus < 500) {
     // These are bad responses of some kind, they aren't going to fix themselves
     throw new PermanentDataAccessError(message, Date.now(), response);
   }
 
-  if (response.status >= 500) {
+  if (responseStatus >= 500) {
     // These are temporary server side failure conditions, retry them
     throw new TemporaryDataAccessError(message, Date.now(), response);
   }

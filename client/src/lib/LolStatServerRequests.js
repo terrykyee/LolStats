@@ -2,13 +2,11 @@
 /**
  * @file Login server requests
  */
-import { checkHttpStatusCode } from './FetchUtilities';
+import { checkHttpStatusCode, checkResponseStatusCode } from './FetchUtilities';
 import { LolStatServerUrls } from './LolStatServerUrls';
 
 const LolStatRequestsErrorMessages = {
   REQUEST_ERROR: 'Error obtaining data from the Riot API server',
-  REGISTER_ERROR: 'Error registering a user',
-  USER_RETRIEVAL_ERROR: 'Error retrieving user information',
 };
 
 /**
@@ -18,14 +16,10 @@ export class LolStatServerRequests {
   static async request(url: string): Promise<*> {
     const response = await fetch(url);
 
-    checkHttpStatusCode(response, LolStatRequestsErrorMessages.REQUEST_ERROR);
-    return response.json();
-
-    /*return fetch(url)
-      .then((response: Object) => {
-          checkHttpStatusCode(response, LolStatRequestsErrorMessages.REQUEST_ERROR);
-          return response.json();
-        });*/
+    checkHttpStatusCode(response, response.status, LolStatRequestsErrorMessages.REQUEST_ERROR);
+    const responseJson = await response.json();
+    checkHttpStatusCode(response, responseJson.statusCode, LolStatRequestsErrorMessages.REQUEST_ERROR);
+    return responseJson;
   }
 
   static summoner(summonerName: string): Promise<*> {

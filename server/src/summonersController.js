@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import apiCache from './lib/api-cache';
 import * as dataAugmentor from './lib/dataAugmentor';
+import { MAX_MATCHES_TO_RETURN } from './lib/constants/generalConstants';
 
 const router = express.Router();
 router.use(bodyParser.urlencoded({extended: true}));
@@ -48,7 +49,10 @@ router.get('/summoners/matches/:accountId', async (request, response) => {
   const { accountId } = request.params;
 
   try {
-    const matchList = await apiCache.Matchlist.by.accountID(accountId);
+    // TODO make use of react-infinite-scroller to load matches as you scroll to increase responsiveness
+    const matchList = await apiCache.Matchlist.by.accountID(accountId).query({
+      endIndex: MAX_MATCHES_TO_RETURN,
+    });
 
     await Promise.all(matchList.matches.map(async (match) => {
       const details = await apiCache.Match.get(match.gameId);
