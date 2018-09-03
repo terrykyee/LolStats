@@ -23,12 +23,13 @@ const apiCache = Kayn(process.env.RIOT_API_KEY)({
     burst: false,
     shouldExitOn403: false,
   },
-  cacheOptions: {
+// Remove for use in heroku without redis
+  /*  cacheOptions: {
     cache: redisCache,
     timeToLives: {
       useDefault: true,
     },
-  },
+  },*/
 });
 
 export async function getChampionsCache() {
