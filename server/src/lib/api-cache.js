@@ -23,9 +23,8 @@ const apiCache = Kayn(process.env.RIOT_API_KEY)({
     burst: false,
     shouldExitOn403: false,
   },
-// Remove caching with redis to make heroku deploy simpler
-  cacheOptions: {
-    cache: null,
+    cacheOptions: {
+    cache: redisCache,
     timeToLives: {
       useDefault: true,
     },
