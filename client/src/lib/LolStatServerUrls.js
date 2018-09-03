@@ -8,7 +8,7 @@ export const Paths = {
   SUMMONER_MATCHES: '/api/summoners/matches',
 };
 
-export const HOST_NAME = 'localhost';
+export const HOST_NAME = 'lol-stat-server.herokuapp.com';
 
 /**
  * Represents a protocol and its characteristics.

@@ -41,7 +41,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "publishheroku": "cd ../ && git subtree push --prefix client lol-stat-client master || true"
   },
   "devDependencies": {
   }

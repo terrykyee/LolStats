@@ -8,7 +8,8 @@
     "start": "babel-node src/server.js",
     "debug": "babel-node src/server.js --inspect",
     "lint": "eslint src --ext .js",
-    "flow": "flow check"
+    "flow": "flow check",
+    "publishheroku": "cd ../ && git subtree push --prefix server lol-stat-server master || true"
   },
   "author": "Terry Yee",
   "license": "ISC",
