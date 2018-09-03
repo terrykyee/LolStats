@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import './Summoner.css';
 import type { SummonerDataType } from '../../data/types/SummonerDataType';
 import type { LeagueDataType } from '../../data/types/LeagueDataType';
-import { lowerCaseAllWordsExceptFirstLetters } from '../../lib/StringUtilities';
-import { SummonerDisplayConstants } from '../../lib/DisplayConstants';
+import { SummonerDisplayConstants, MAX_MATCHES_TO_RETURN } from '../../lib/DisplayConstants';
 
 // Flow type definitions for injected props
 type SummonerInjectedPropsType = {
@@ -77,13 +76,16 @@ class SummonerComponent extends
           {this.props.leagueData ? (
             <React.Fragment>
               <div className="leagueText">
-                {lowerCaseAllWordsExceptFirstLetters(this.props.leagueData.tier)} {this.props.leagueData.rank}
+                {this.props.leagueData.tier} {this.props.leagueData.rank}
               </div>
               <div className="leagueTextContd">
                 {this.props.leagueData.leaguePoints} {SummonerDisplayConstants.POINTS_LABEL}
               </div>
               <div className="leagueName">
                 {this.props.leagueData.leagueName}
+              </div>
+              <div className="infoText">
+                {`Displaying last ${MAX_MATCHES_TO_RETURN} match results`}
               </div>
             </React.Fragment>
           ) : null}

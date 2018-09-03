@@ -24,7 +24,8 @@
 .leagueText,
 .levelText,
 .leagueTextContd,
-.leagueName {
+.leagueName,
+.infoText {
   font-weight: 800;
   font-size: 12px;
   color: #ffffff;
@@ -38,7 +39,8 @@
 }
 
 .leagueText,
-.leagueName {
+.leagueName,
+.infoText {
   margin-top: 10px;
 }
 
@@ -47,6 +49,12 @@
   width: 160px;
 }
 
-.leagueName {
+.leagueName,
+.infoText {
   color: black;
+}
+
+.infoText {
+  font-weight: normal;
+  text-transform: none;
 }

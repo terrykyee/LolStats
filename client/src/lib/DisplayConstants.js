@@ -5,6 +5,7 @@
 export const DECIMALS_TO_SHOW = 2;
 export const MAX_SPELLS = 2;
 export const MAX_ITEMS = 7;
+export const MAX_MATCHES_TO_RETURN = 10;
 
 export const FindSummonerDisplayStringConstants = {
   SUMMONER_LABEL: 'Summoner',
