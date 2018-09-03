@@ -22,7 +22,7 @@ export type WebProtocolType = {
 export const WebProtocols = {
   http: {
     protocol: 'http',
-    port: '3000',
+    port: null,
   },
 };
 
