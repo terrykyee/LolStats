@@ -1,5 +1,5 @@
 /**
- * @file Riot API using Redis cache
+ * @file Riot API using Redis cache and API cace related utility functions
  */
 import { Kayn, REGIONS, RedisCache } from 'kayn';
 

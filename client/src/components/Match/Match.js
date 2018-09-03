@@ -52,10 +52,10 @@ class MatchComponent extends
   state: MatchStateType;
   props: MatchPropsType;
 
-  async componentDidMount() {
-    //console.log(this.props.match);
-  }
-
+  /**
+   * Generate JSX representing summoner spells used in a match.  An array of spell images.
+   * @returns {Array} Array of React JSX representing summoner spells
+   */
   generateSpells(): Array<React.Node> {
     const spellsArray = [];
 
@@ -75,6 +75,10 @@ class MatchComponent extends
     return spellsArray;
   }
 
+  /**
+   * Generate JSX representing summoner items used in a match. An array of item images.
+   * @returns {Array} Array of React JSX representing summoner items
+   */
   generateItems(): Array<React.Node> {
     const itemsArray = [];
     const summonerParticipant = this.props.match.details.participants[
@@ -96,6 +100,11 @@ class MatchComponent extends
     return itemsArray;
   }
 
+  /**
+   * Generate JSX representing participants in the match.  An array of divs containing champion
+   * image and summoner names.
+   * @returns {Array} Array of React JSX representing match participants
+   */
   generateParticipants(): Array<React.Node> {
     const participantsArray = [];
     const participants = this.props.match.details.participants;

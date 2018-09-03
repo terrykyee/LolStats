@@ -48,7 +48,7 @@ type SummonerStatsStateType = {
 const ErrorMessages = {
   NOT_FOUND_MESSAGE: 'Summoner was not found',
   UNAUTHENTICATED_MESSAGE: 'You are not authorized to retrieve summoner content',
-  SERVER_FAILED: 'Our service is currently offline, please try again later',
+  SERVER_FAILED: 'Riot API servers are currently offline, please try again later',
 };
 
 type ApiRequestFunctionType = (arg: any) => Promise<*>;
@@ -105,6 +105,12 @@ class SummonerStatsComponent extends
     }
   }
 
+  /**
+   * Higher order function to genericize request error handling for all requests made from this
+   * component
+   * @param requestHandler Request handling function to take inputs then send appropriate request
+   * @returns {Promise<void>}
+   */
   async sendRequest(requestHandler: ApiRequestFunctionType) {
     try {
       await requestHandler();

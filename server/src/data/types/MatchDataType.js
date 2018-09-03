@@ -1,4 +1,7 @@
 //@flow
+/**
+ * @file Riot API match related data types
+ */
 
 export type MatchDataType = {
   platformId: string,

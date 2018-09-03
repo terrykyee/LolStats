@@ -1,6 +1,6 @@
 //@flow
 /**
- * @file Login server requests
+ * @file Riot proxy API server requests
  */
 import { checkHttpStatusCode } from './FetchUtilities';
 import { LolStatServerUrls } from './LolStatServerUrls';

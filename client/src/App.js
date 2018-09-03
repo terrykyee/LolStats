@@ -25,7 +25,6 @@ type AppPropsType = AppInjectedPropsType &
  * The state declaration for the App state
  */
 type AppStateType = {
-  login: boolean,
 }
 
 /**
@@ -40,7 +39,6 @@ class App extends React.Component<AppPropsType, AppStateType> {
     super(props);
 
     this.state = {
-      login: true,
     }
   }
 

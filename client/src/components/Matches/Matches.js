@@ -56,6 +56,10 @@ class MatchesComponent extends
     console.log(this.props.matches);
   }
 
+  /**
+   * Generate JSX representing summoner matches
+   * @returns {Array} Array of React JSX representing summoner matches
+   */
   generateMatches() {
     if (this.props.matches && this.props.matches.matches) {
       return this.props.matches.matches.map( match => (

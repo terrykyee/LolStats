@@ -1,6 +1,7 @@
 // @flow
 /**
  * @file Find Summoner React component
+ * Component that allows the user to search for summoner related statistical information
  */
 import * as React from 'react';
 import './FindSummoner.css';
@@ -23,7 +24,7 @@ type FindSummonerPropsType = FindSummonerInjectedPropsType &
   FindSummonerBoundPropsType & FindSummonerConnectedPropsType;
 
 /**
- * The state declaration for the Login/Sign up state
+ * The state declaration for the find summoner component state
  */
 type FindSummonerStateType = {
   summonerName: string,
@@ -32,7 +33,7 @@ type FindSummonerStateType = {
 
 
 /**
- * Login/Sign up React Component class
+ * Find Summoner React Component class
  */
 class FindSummonerComponent extends
   React.PureComponent<FindSummonerPropsType, FindSummonerStateType> {
@@ -66,10 +67,10 @@ class FindSummonerComponent extends
    * Validate user entered data
    * @param props React properties
    * @param state React state
-   * @returns {boolean} True if all fields valid when in sign in mode,
-   * in login mode only email and password need to be valid, otherwise false
+   * @returns {boolean} True if all fields are valid, otherwise false
    */
   userDataValid = (props: FindSummonerPropsType, state: FindSummonerStateType): boolean => {
+    // TODO implement validation that matches up with Riot restrictions on summoner names
     const validName = state.summonerName;
     return validName;
   };
@@ -85,7 +86,7 @@ class FindSummonerComponent extends
       </div>
     ) : (<div></div>);
 
-    const summonerNameField = !this.props.login ? (
+    const summonerNameField = (
       <div className="inputField">
         <div className="label">{FindSummonerDisplayStringConstants.SUMMONER_LABEL}</div>
         <div className="input">
@@ -108,7 +109,7 @@ class FindSummonerComponent extends
           />
         </div>
       </div>
-    ) : (<div></div>);
+    );
 
     const contents = (
       <div className="main">
@@ -119,7 +120,7 @@ class FindSummonerComponent extends
             onClick={this.findSummonerHandler}
             disabled={!this.userDataValid(this.props, this.state)}
           >
-            {this.props.login ? FindSummonerDisplayStringConstants.LOGIN : FindSummonerDisplayStringConstants.LOAD_STATS}
+            {FindSummonerDisplayStringConstants.LOAD_STATS}
           </button>
         </div>
         {error}

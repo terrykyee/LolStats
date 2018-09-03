@@ -1,6 +1,6 @@
 //@flow
 /**
- * @file User login controller - defines all routes for the login server
+ * @file Summoner controller - defines all routes for the for providing summoner related information
  */
 import express from 'express';
 import bodyParser from 'body-parser';

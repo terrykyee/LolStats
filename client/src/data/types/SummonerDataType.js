@@ -1,4 +1,8 @@
 //@flow
+/**
+ * @file Riot API summoner related data types
+ */
+
 export type AugSummonerDataType = SummonerDataType & {
   profileIconUrl: string,
 }

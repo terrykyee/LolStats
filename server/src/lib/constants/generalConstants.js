@@ -1,5 +1,5 @@
 /**
- * @file General string constants
+ * @file General constants
  */
 
 export const MATCH_WIN = "Win";
