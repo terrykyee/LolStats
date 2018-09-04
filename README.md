@@ -27,5 +27,16 @@ The `server` uses [dotenv](https://github.com/motdotla/dotenv) for loading envir
 cd client
 npm run start
 ```
+### Configuration
+String constants/objects in LolStatServerUrls.js define the server location the client is pointed at:
+
+| Name | Description | Default |
+|------|-------------|---------|
+| HOST_NAME | Host name for the Riot API proxy server | lol-stat-server.herokuapp.com |
+| protocol | The web protocol used to talk to the server | http |
+| port | The port on which the server listens | 3000 |
+
+
+
 
 
