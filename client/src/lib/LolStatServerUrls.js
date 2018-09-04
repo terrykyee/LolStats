@@ -9,6 +9,7 @@ export const Paths = {
 };
 
 export const HOST_NAME = 'lol-stat-server.herokuapp.com';
+//export const HOST_NAME = 'localhost';
 
 /**
  * Represents a protocol and its characteristics.
@@ -22,7 +23,7 @@ export type WebProtocolType = {
 export const WebProtocols = {
   http: {
     protocol: 'http',
-    port: null,
+    port: null, //'3000',
   },
 };
 

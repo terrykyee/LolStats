@@ -6,6 +6,7 @@ import { Kayn, REGIONS, RedisCache } from 'kayn';
 const redisCache = new RedisCache({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD,
   keyPrefix: 'riotApi',
 });
 
@@ -23,9 +24,8 @@ const apiCache = Kayn(process.env.RIOT_API_KEY)({
     burst: false,
     shouldExitOn403: false,
   },
-// Remove caching with redis to make heroku deploy simpler
   cacheOptions: {
-    cache: null,
+    cache: redisCache,
     timeToLives: {
       useDefault: true,
     },

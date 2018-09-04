@@ -3,24 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
-    "extendable-error-class": "^0.1.1",
-    "isomorphic-fetch": "^2.2.1",
-    "isomorphic-style-loader": "^4.0.0",
-    "postcss": "^6.0.22",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-inputs-validation": "^1.0.0",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "url-join": "^4.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
-    "dotenv": "^6.0.0",
+    "classnames": "^2.2.5",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -32,9 +19,21 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
+    "extendable-error-class": "^0.1.1",
     "flow-bin": "^0.69.0",
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-style-loader": "^4.0.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1"
+    "postcss": "^6.0.22",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-inputs-validation": "^1.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "sass-loader": "^7.0.1",
+    "url-join": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,6 +43,5 @@
     "flow": "flow",
     "publishheroku": "cd ../ && git subtree push --prefix client lol-stat-client master || true"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

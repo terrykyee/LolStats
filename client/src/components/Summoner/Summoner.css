@@ -1,7 +1,7 @@
 .summoner {
   font-family: 'Open Sans', sans-serif;
-  display: flex;
-  flex-direction: column;
+  flex: none;
+  display: block;
   background-color: #a5273a;
   height: 100%;
 }
@@ -45,7 +45,7 @@
 }
 
 .profileIcon {
-  margin-top: 10px;
+  margin: 10px 10px 0 10px;
   width: 160px;
 }
 
