@@ -10,7 +10,7 @@ A barebones summoner statistical display showing basic summoner information and 
 cd server
 npm run start
 ```
-###Environment Variables
+### Environment Variables
 The `server` uses [dotenv](https://github.com/motdotla/dotenv) for loading environment variables. The following environment variables are supported:
 
 | Name | Description | Default |
