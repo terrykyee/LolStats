@@ -8,6 +8,7 @@ A barebones summoner statistical display showing basic summoner information and 
 ```bash
 # Start the server (default port 3000)
 cd server
+npm install
 npm run start
 ```
 ### Environment Variables
@@ -25,6 +26,7 @@ The `server` uses [dotenv](https://github.com/motdotla/dotenv) for loading envir
 ```bash
 # Start the server (default port 3001)
 cd client
+npm install
 npm run start
 ```
 ### Configuration
