@@ -6,7 +6,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import './Match.css';
-import { AugMatchDataType } from '../../data/types/MatchDataType';
+import type { AugMatchDataType } from '../../data/types/MatchDataType';
 import { MatchDisplayConstants, DECIMALS_TO_SHOW, MAX_ITEMS, MAX_SPELLS } from '../../lib/DisplayConstants';
 
 // Flow type definitions for injected props

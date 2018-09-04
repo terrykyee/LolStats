@@ -179,18 +179,21 @@ export type TimelineType = {
   lane: string,
 }
 
-export type ParticipantType =  {
+export type BaseParticipantType =  {
   participantId: number,
   teamId: number,
   championId: number,
   spell1Id: number,
   spell2Id: number,
   highestAchievedSeasonTier: string,
-  stats: StatsType,
   timeline: TimelineType,
 }
 
-export type AugParticipantType = ParticipantType & {
+export type ParticipantType = BaseParticipantType & {
+  stats: StatsType,
+}
+export type AugParticipantType = BaseParticipantType & {
+  stats: AugStatsType,
   championImgUrl: string,
   championName: string,
 }
@@ -211,7 +214,7 @@ export type ParticipantIdentityType =   {
   player: PlayerType,
 }
 
-export type BaseAugMatchDetailsType = {
+export type BaseAugMatchDetailsType = BaseMatchDetailsType & {
   summonerIdentityIndex: number,
   summonerSpell1ImgUrl: string,
   summonerSpell2ImgUrl: string,
@@ -238,7 +241,7 @@ export type MatchDetailsType = BaseMatchDetailsType & {
   participants: Array<ParticipantType>,
 }
 
-export type AugMatchDetailsType = MatchDetailsType & BaseAugMatchDetailsType & {
+export type AugMatchDetailsType = BaseAugMatchDetailsType & {
   participants: Array<AugParticipantType>,
 }
 

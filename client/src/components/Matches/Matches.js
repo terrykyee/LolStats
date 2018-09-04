@@ -6,12 +6,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import './Matches.css';
-import { AugMatchesDataType } from '../../data/types/MatchDataType';
+import type { AugMatchesDataType } from '../../data/types/MatchDataType';
 import Match from '../Match/Match';
 
 // Flow type definitions for injected props
 type MatchesInjectedPropsType = {
-  matches: AugMatchesDataType,
+  matches: ?AugMatchesDataType,
 }
 
 // Flow type definitions for connected props

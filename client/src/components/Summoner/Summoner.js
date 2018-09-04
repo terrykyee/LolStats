@@ -6,14 +6,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import './Summoner.css';
-import type { SummonerDataType } from '../../data/types/SummonerDataType';
+import type { AugSummonerDataType } from '../../data/types/SummonerDataType';
 import type { LeagueDataType } from '../../data/types/LeagueDataType';
 import { SummonerDisplayConstants, MAX_MATCHES_TO_RETURN } from '../../lib/DisplayConstants';
 
 // Flow type definitions for injected props
 type SummonerInjectedPropsType = {
-  summonerData: SummonerDataType,
-  leagueData: LeagueDataType,
+  summonerData: ?AugSummonerDataType,
+  leagueData: ?LeagueDataType,
 }
 
 // Flow type definitions for connected props

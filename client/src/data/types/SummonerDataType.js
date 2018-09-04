@@ -13,5 +13,5 @@ export type SummonerDataType = {
   name: string,
   profileIconId: number,
   revisionDate: number,
-  summonerLevel: number
+  summonerLevel: number,
 }

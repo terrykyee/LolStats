@@ -16,7 +16,7 @@ export const HOST_NAME = 'lol-stat-server.herokuapp.com';
  */
 export type WebProtocolType = {
   protocol: string,
-  port: string,
+  port: ?string,
 };
 
 /** List of web protocols used in communication */
@@ -40,7 +40,7 @@ export class LolStatServerUrls {
   static formatOrigin(hostname: string, protocol: WebProtocolType): string {
     let origin = `${encodeURIComponent(protocol.protocol)}://${encodeURIComponent(hostname)}`;
 
-    if (protocol.port !== null && protocol.port.length > 0) {
+    if (protocol.port && protocol.port.length > 0) {
       origin = `${origin}:${encodeURIComponent(protocol.port)}`;
     }
 

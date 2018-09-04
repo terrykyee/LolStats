@@ -46,8 +46,7 @@ class FindSummonerComponent extends
     super(props);
 
     this.state = {
-      summonName: '',
-      error: '',
+      summonerName: '',
       validate: false,
     }
   }
@@ -71,8 +70,7 @@ class FindSummonerComponent extends
    */
   userDataValid = (props: FindSummonerPropsType, state: FindSummonerStateType): boolean => {
     // TODO implement validation that matches up with Riot restrictions on summoner names
-    const validName = state.summonerName;
-    return validName;
+    return !!state.summonerName;
   };
 
   /**
@@ -80,12 +78,6 @@ class FindSummonerComponent extends
    * @returns {XML}
    */
   render(): React.Node {
-    const error = this.state.error ? (
-      <div className="error">
-        {this.state.error}
-      </div>
-    ) : (<div></div>);
-
     const summonerNameField = (
       <div className="inputField">
         <div className="label">{FindSummonerDisplayStringConstants.SUMMONER_LABEL}</div>
@@ -123,7 +115,6 @@ class FindSummonerComponent extends
             {FindSummonerDisplayStringConstants.LOAD_STATS}
           </button>
         </div>
-        {error}
       </div>
     );
     return (

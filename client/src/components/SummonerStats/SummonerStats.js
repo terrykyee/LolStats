@@ -12,9 +12,9 @@ import {
   NotFoundDataAccessError,
   UnauthenticatedDataAccessError,
 } from "../../lib/NetworkUtilities";
-import type { AugMatchDataType } from '../../data/types/MatchDataType';
+import type { AugMatchesDataType } from '../../data/types/MatchDataType';
 import type { LeagueDataType } from '../../data/types/LeagueDataType';
-import type { SummonerDataType } from '../../data/types/SummonerDataType';
+import type { AugSummonerDataType } from '../../data/types/SummonerDataType';
 import Summoner from '../Summoner/Summoner';
 import Matches from '../Matches/Matches';
 
@@ -40,9 +40,9 @@ type SummonerStatsPropsType = SummonerStatsInjectedPropsType &
 type SummonerStatsStateType = {
   isFetching: boolean,
   error: string,
-  summonerData: SummonerDataType,
-  matches: Array<AugMatchDataType>,
-  leagueData: LeagueDataType,
+  summonerData: ?AugSummonerDataType,
+  matches: ?AugMatchesDataType,
+  leagueData: ?LeagueDataType,
 }
 
 const ErrorMessages = {
@@ -70,7 +70,9 @@ class SummonerStatsComponent extends
     this.state = {
       isFetching: true,
       error: '',
-      summonerData: null
+      summonerData: null,
+      matches: null,
+      leagueData: null,
     }
   }
 
@@ -89,11 +91,15 @@ class SummonerStatsComponent extends
 
     if (summonerData) {
       await this.sendRequest(async () => {
-        leagueData = await LolStatServerRequests.league(summonerData.id.toString());
+        if (summonerData) {
+          leagueData = await LolStatServerRequests.league(summonerData.id.toString());
+        }
       });
 
       await this.sendRequest(async () => {
-        matches = await LolStatServerRequests.matches(summonerData.accountId.toString());
+        if (summonerData) {
+          matches = await LolStatServerRequests.matches(summonerData.accountId.toString());
+        }
       });
 
       this.setState({

@@ -30,7 +30,7 @@ export const FetchConstants = {
  * @param responseStatus - response status code
  * @param message - Message to include in any exceptions
  */
-export function checkHttpStatusCode(response, responseStatus: number, message: string) {
+export function checkHttpStatusCode(response: any, responseStatus: number, message: string) {
   if (responseStatus === null) {
     throw new DataAccessError(message, Date.now(), response);
   }
