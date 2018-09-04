@@ -4,6 +4,7 @@
   border-style: solid;
   border-color: gray;
   border-width: 1px;
+  min-width: 850px;
 }
 
 .matchHeaderWin,

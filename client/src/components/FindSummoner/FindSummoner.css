@@ -48,23 +48,8 @@
   background: indianred;
 }
 
-.loggedIn {
-  font-size: 24px;
-  color: black;
-  font-weight: bold;
-}
-
 .error {
   color: red;
   margin-top: 5px;
   font-size: 12px;
-}
-
-.rememberMeLabel {
-  font-size: small;
-}
-
-.rememberMe {
-  margin-top: 5px;
-  font-size: small;
 }
