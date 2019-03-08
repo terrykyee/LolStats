@@ -17,7 +17,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "kayn": "^0.9.8",
     "redis": "^2.8.0",
     "request-rate-limiter": "^1.0.2",
