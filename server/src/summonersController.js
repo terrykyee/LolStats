@@ -14,8 +14,6 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 router.use(cors());
 router.use((request, response, next) => {
-  response.header("Access-Control-Allow-Origin", "lol-stat-client.herokuapp.com");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header('Content-Type', 'application/json');
   next();
 });
@@ -58,7 +56,8 @@ router.get('/summoners/matches/:accountId', async (request, response) => {
 
     await Promise.all(matchList.matches.map(async (match) => {
       const details = await apiCache.Match.get(match.gameId);
-      match.details = await dataAugmentor.matchDetails(parseInt(accountId), details);
+      console.log(accountId);
+      match.details = await dataAugmentor.matchDetails(accountId, details);
     }));
 
     response.send(matchList);
